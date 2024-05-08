@@ -31,7 +31,7 @@ const Login = () => {
         sessionStorage.setItem("token", res.data.token)
         toast.success("Login sucessfully")
         navigate("/home")
-        window.location.href("/home")
+        window.location.href = "/home"
       }
       else if (res.data.data.role === "Buyer") {
         toast.error("Anautorized Person")

@@ -17,7 +17,7 @@ const Home = () => {
                                 <li className="breadcrumb-item active">Dashboard</li>
                             </ol>
                             <div className="row">
-                                <div className="col-xl-3 col-md-6">
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-primary text-white mb-4">
                                         <div className="card-body">Banares</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -25,8 +25,8 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-xl-3 col-md-6">
+                                </div> */}
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-warning text-white mb-4">
                                         <div className="card-body">Marque</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -34,8 +34,8 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-xl-3 col-md-6">
+                                </div> */}
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-success text-white mb-4">
                                         <div className="card-body">Best Sellers</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -43,7 +43,7 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-xl-3 col-md-6">
                                     <div className="card bg-secondary text-white mb-4">
                                         <div className="card-body">Category</div>
@@ -71,7 +71,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-xl-3 col-md-6">
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-primary text-white mb-4">
                                         <div className="card-body">Testimonial</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -79,7 +79,7 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-xl-3 col-md-6">
                                     <div className="card bg-warning text-white mb-4">
                                         <div className="card-body">Newslestter</div>
@@ -89,7 +89,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-xl-3 col-md-6">
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-success text-white mb-4">
                                         <div className="card-body">Cart</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -97,8 +97,8 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-xl-3 col-md-6">
+                                </div> */}
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-primary text-white mb-4">
                                         <div className="card-body">Checkout</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -106,8 +106,8 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-xl-3 col-md-6">
+                                </div> */}
+                                {/* <div className="col-xl-3 col-md-6">
                                     <div className="card bg-info text-white mb-4">
                                         <div className="card-body">Wishlist</div>
                                         <div className="card-footer d-flex align-items-center justify-content-between">
@@ -115,7 +115,7 @@ const Home = () => {
                                             <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

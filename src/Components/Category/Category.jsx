@@ -5,6 +5,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 
 const Category = () => {
+    const token = sessionStorage.getItem("token")
     const [data, setData] = useState([])
     const getApiData = async () => {
         try {
@@ -16,7 +17,11 @@ const Category = () => {
     }
     const deleteRecord = async (_id) => {
         try {
-            let res = await axios.delete("http://localhost:8000/api/category/" + _id)
+            let res = await axios.delete("http://localhost:8000/api/category/" + _id ,{
+                headers:{
+                    "Authorization" : token
+                }
+            })
             if (res.status === 200) {
                 toast.success("Category Deletd Succssfully")
             }

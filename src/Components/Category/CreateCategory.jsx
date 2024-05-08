@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 const CreateCategory = () => {
+    const token = sessionStorage.getItem("token")
+    console.log(token)
     const [name, setName] = useState("")
     const navigate = useNavigate()
     const getInputData = (e) => {
@@ -13,7 +15,12 @@ const CreateCategory = () => {
     const postData = async (e) => {
         e.preventDefault()
         try {
-            let res = await axios.post("http://localhost:8000/api/category", { name: name })
+            let res = await axios.post("http://localhost:8000/api/category", { name: name }, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+            console.log(res)
             if (res.status === 200) {
                 toast.success("Product Category is created")
                 navigate("/category")
