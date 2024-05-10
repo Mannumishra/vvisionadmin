@@ -10,6 +10,7 @@ const Category = () => {
     const getApiData = async () => {
         try {
             let res = await axios.get("http://localhost:8000/api/category")
+            console.log(res)
             setData(res.data.data)
         } catch (error) {
             console.log(error);
@@ -17,11 +18,7 @@ const Category = () => {
     }
     const deleteRecord = async (_id) => {
         try {
-            let res = await axios.delete("http://localhost:8000/api/category/" + _id ,{
-                headers:{
-                    "Authorization" : token
-                }
-            })
+            let res = await axios.delete("http://localhost:8000/api/category/" + _id )
             if (res.status === 200) {
                 toast.success("Category Deletd Succssfully")
             }
@@ -49,13 +46,17 @@ const Category = () => {
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {data.map((item, index) => (
                                     <tr key={index}>
-                                        <td>{item.name}</td>
+                                        <td>{item.categoryname}</td>
+                                        <td>{item.description}</td>
+                                        <td><img src={item.image} alt="" style={{height:100}}/></td>
                                         <td>
                                             <Link to={`/updatecategory/${item._id}`}>
                                                 <button className='btn btn-success'>Edit</button>

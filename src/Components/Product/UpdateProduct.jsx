@@ -17,16 +17,13 @@ function UpdateProduct() {
         }
     }
     const [data, setData] = useState({
-        name: '',
-        category: '',
-        sizes: [{ size: '', price: '', discountprice: '', finalprice: '', stock: '' }],
-        description: '',
-        productdetails: "",
-        tag: '',
-        pic1: '',
-        pic2: '',
-        pic3: '',
-        pic4: ''
+        productname: '',
+        categoryname: '',
+        productdescription: '',
+        image: '',
+        image1: '',
+        image2: '',
+        image3: ''
     });
 
     const getInputData = (e) => {
@@ -37,12 +34,6 @@ function UpdateProduct() {
     const getInputfile = (e) => {
         const { name, files } = e.target;
         setData({ ...data, [name]: files[0] });
-    };
-
-    const handleSizeChange = (index, field, value) => {
-        const updatedSizes = [...data.sizes];
-        updatedSizes[index][field] = value;
-        setData(prevData => ({ ...prevData, sizes: updatedSizes }));
     };
 
     const getApiData = async () => {
@@ -58,23 +49,13 @@ function UpdateProduct() {
         e.preventDefault();
         try {
             const formData = new FormData();
-            formData.append("name", data.name);
-            formData.append("category", data.category);
-            formData.append("stock", data.stock);
-            formData.append("description", data.description);
-            formData.append("productdetails", data.productdetails);
-            formData.append("tag", data.tag);
-            formData.append("pic1", data.pic1);
-            formData.append("pic2", data.pic2);
-            formData.append("pic3", data.pic3);
-            formData.append("pic4", data.pic4);
-            data.sizes.forEach((size, index) => {
-                formData.append(`sizes[${index}][size]`, size.size);
-                formData.append(`sizes[${index}][price]`, size.price);
-                formData.append(`sizes[${index}][discountprice]`, size.discountprice);
-                formData.append(`sizes[${index}][finalprice]`, size.finalprice);
-                formData.append(`sizes[${index}][stock]`, size.stock);
-            });
+            formData.append("productname", data.productname);
+            formData.append("categoryname", data.categoryname);
+            formData.append("productdescription", data.productdescription);
+            formData.append("image", data.image);
+            formData.append("image1", data.image1);
+            formData.append("image2", data.image2);
+            formData.append("image3", data.image3);
             const res = await axios.put("http://localhost:8000/api/product/" + _id, formData);
             if (res.status === 200) {
                 toast.success("Product Updated created")
@@ -99,70 +80,40 @@ function UpdateProduct() {
                     <form onSubmit={postData} className="mt-4">
                         <div className="mb-3">
                             <label htmlFor="name" className="form-label">Product Name:</label>
-                            <input type="text" id="name" name="name" onChange={getInputData} value={data.name} className="form-control" required />
+                            <input type="text" id="name" name="productname" onChange={getInputData} value={data.productname} className="form-control" required />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="category">Select Category</label>
-                            <select name="category" id="category" onChange={getInputData} className="form-control" value={data.category}>
+                            <select name="categoryname" id="category" onChange={getInputData} className="form-control" value={data.categoryname}>
                                 <option disabled>Chose Category</option>
                                 {
                                     catedata.map((item, index) =>
-                                        <option key={index}>{item.name}</option>
+                                        <option key={index}>{item.categoryname}</option>
                                     )
                                 }
                             </select>
                         </div>
-
-                        {data.sizes.map((size, index) => (
-                            <div key={index} className="mb-3">
-                                <label htmlFor={`size${index + 1}`} className="form-label">Size {index + 1}:</label>
-                                <input type="text" id={`size${index + 1}`} name={`size${index + 1}`} value={size.size} onChange={(e) => handleSizeChange(index, 'size', e.target.value)} className="form-control" required />
-                                <label htmlFor={`price${index + 1}`} className="form-label">Price {index + 1}:</label>
-                                <input type="number" id={`price${index + 1}`} name={`price${index + 1}`} value={size.price} onChange={(e) => handleSizeChange(index, 'price', e.target.value)} className="form-control" required />
-                                <label htmlFor={`discountprice${index + 1}`} className="form-label">Discount Price {index + 1}:</label>
-                                <input type="number" id={`discountprice${index + 1}`} name={`discountprice${index + 1}`} value={size.discountprice} onChange={(e) => handleSizeChange(index, 'discountprice', e.target.value)} className="form-control" required />
-                                <label htmlFor={`finalprice${index + 1}`} className="form-label">Final Price {index + 1}:</label>
-                                <input type="number" id={`finalprice${index + 1}`} name={`finalprice${index + 1}`} value={size.finalprice} onChange={(e) => handleSizeChange(index, 'finalprice', e.target.value)} className="form-control" required />
-                                <label htmlFor={`stock${index + 1}`} className="form-label">Stock {index + 1}:</label>
-                                <input type="text" id={`stock${index + 1}`} name={`stock${index + 1}`} value={size.stock} onChange={(e) => handleSizeChange(index, 'stock', e.target.value)} className="form-control" required />
-                            </div>
-                        ))}
-                        <button type="button" onClick={() => setData(prevData => ({ ...prevData, sizes: [...prevData.sizes, { size: '', price: '', discountprice: '', finalprice: '', stock: '' }] }))} className="btn btn-dark mb-3">Add Size</button>
-
-                        <div className="mb-3">
-                            <label htmlFor="description" className="form-label">Productdetails:</label>
-                            <textarea id="description" name="productdetails" rows="4" cols="50" onChange={getInputData} value={data.productdetails} className="form-control"></textarea>
-                        </div>
-
-
-                        <div className="mb-3">
+                       <div className="mb-3">
                             <label htmlFor="description" className="form-label">Description:</label>
-                            <textarea id="description" name="description" rows="4" cols="50" onChange={getInputData} value={data.description} className="form-control"></textarea>
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="tag" className="form-label">Tag:</label>
-                            <input type="text" id="tag" name="tag" onChange={getInputData} value={data.tag} className="form-control" required />
-                        </div>
-
-                        <div className="mb-3">
+                            <textarea id="description" name="productdescription" rows="4" cols="50" onChange={getInputData} value={data.productdescription} className="form-control"></textarea>
+                        </div> <div className="mb-3">
                             <label htmlFor="pic1" className="form-label">Picture 1:</label>
-                            <input type="file" name="pic1" onChange={getInputfile} className="form-control" />
+                            <input type="file" name="image" onChange={getInputfile} className="form-control" />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="pic2" className="form-label">Picture 2:</label>
-                            <input type="file" name="pic2" onChange={getInputfile} className="form-control" />
+                            <input type="file" name="image1" onChange={getInputfile} className="form-control" />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="pic3" className="form-label">Picture 3:</label>
-                            <input type="file" name="pic3" onChange={getInputfile} className="form-control" />
+                            <input type="file" name="image2" onChange={getInputfile} className="form-control" />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="pic4" className="form-label">Picture 4:</label>
-                            <input type="file" name="pic4" onChange={getInputfile} className="form-control" />
+                            <input type="file" name="image3" onChange={getInputfile} className="form-control" />
                         </div>
 
                         <button type="submit" className="btn btn-dark w-100" style={{ marginBottom: 100 }}>Update Product</button>

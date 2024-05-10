@@ -5,27 +5,40 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 
 const UpdateCategory = () => {
-    const [name, setName] = useState("")
+    const [data, setData] = useState({
+        categoryname: "",
+        description: "",
+        image: ""
+    })
     const navigate = useNavigate()
     const { _id } = useParams()
     const getInputData = (e) => {
-        setName(e.target.value)
+        const { name, value } = e.target
+        setData({ ...data, [name]: value })
+    }
+    const getFileData = (e) => {
+        const { name, files } = e.target
+        setData({ ...data, [name]: files[0] })
     }
     const getApiData = async () => {
         try {
             let res = await axios.get("http://localhost:8000/api/category/" + _id)
             console.log(res);
-            setName(res.data.data)
+            setData(res.data.data)
         } catch (error) {
             console.log(error);
         }
     }
     const postData = async (e) => {
         e.preventDefault()
+        const formData = new FormData()
+        formData.append("categoryname", data.categoryname)
+        formData.append("description", data.description)
+        formData.append("image", data.image)
         try {
-            let res = await axios.put("http://localhost:8000/api/category/" + _id, { name: name })
+            let res = await axios.put("http://localhost:8000/api/category/" + _id, formData)
             if (res.status === 200) {
-                toast.success("Product Category is created")
+                toast.success("Product Category is Updated")
                 navigate("/category")
             }
         } catch (error) {
@@ -48,9 +61,17 @@ const UpdateCategory = () => {
                             <form onSubmit={postData}>
                                 <div className="mb-2">
                                     <label htmlFor="productName" className="form-label">Category Name</label>
-                                    <input type="text" name="name" value={name.name} id="productName" className="form-control" onChange={getInputData} />
+                                    <input type="text" name="categoryname" value={data.categoryname} id="productName" className="form-control" onChange={getInputData} />
                                 </div>
-                                <button type="submit" className="btn btn-dark w-100">Update Product Category</button>
+                                <div className="mb-2">
+                                    <label htmlFor="productName" className="form-label">Category Image</label>
+                                    <input type="file" name="image" id="productName" className="form-control" onChange={getFileData} />
+                                </div>
+                                <div className="mb-2">
+                                    <label htmlFor="productName" className="form-label">Category description</label>
+                                    <input type="text" name="description" id="productName" value={data.description} className="form-control" onChange={getInputData} />
+                                </div>
+                                <button type="submit" className="btn btn-dark w-100">Add Product Category</button>
                             </form>
                         </div>
                     </div>

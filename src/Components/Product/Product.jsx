@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 
 const Product = () => {
     const [data, setData] = useState([])
-
+console.log(data)
     const getApiData = async () => {
         try {
             let res = await axios.get("http://localhost:8000/api/product")
@@ -45,59 +45,41 @@ const Product = () => {
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Category</th>
+                                        <th>Product Name</th>
+                                        <th>Category Name</th>
                                         <th>Description</th>
-                                        <th>Productdetails</th>
-                                        <th>Tag</th>
                                         <th>Image1</th>
                                         <th>Image2</th>
                                         <th>Image3</th>
                                         <th>Image4</th>
-                                        <th>Size/Price/Discount/Final Price/Stock</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data && data.map((item, index) => (
+                                    { data.map((item, index) => (
                                         <tr key={index}>
-                                            <td>{item.name}</td>
-                                            <td>{item.category}</td>
-                                            <td>{item.description}</td>
-                                            <td>{item.productdetails}</td>
-                                            <td>{item.tag}</td>
+                                            <td>{item.productname}</td>
+                                            <td>{item.categoryname}</td>
+                                            <td>{item.productdescription}</td>
                                             <td>
-                                                <a href={item.pic1} target='_blank' rel="noopener noreferrer">
-                                                    <img src={item.pic1} alt="" style={{ height: 50 }} />
+                                                <a href={item.image} target='_blank' rel="noopener noreferrer">
+                                                    <img src={item.image} alt="" style={{ height: 50 }} />
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href={item.pic2} target='_blank' rel="noopener noreferrer">
-                                                    <img src={item.pic2} alt="" style={{ height: 50 }} />
+                                                <a href={item.image1} target='_blank' rel="noopener noreferrer">
+                                                    <img src={item.image1} alt="" style={{ height: 50 }} />
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href={item.pic3} target='_blank' rel="noopener noreferrer">
-                                                    <img src={item.pic3} alt="" style={{ height: 50 }} />
+                                                <a href={item.image2} target='_blank' rel="noopener noreferrer">
+                                                    <img src={item.image2} alt="" style={{ height: 50 }} />
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href={item.pic4} target='_blank' rel="noopener noreferrer">
-                                                    <img src={item.pic4} alt="" style={{ height: 50 }} />
+                                                <a href={item.image3} target='_blank' rel="noopener noreferrer">
+                                                    <img src={item.image3} alt="" style={{ height: 50 }} />
                                                 </a>
-                                            </td>
-                                            <td>
-                                                {
-                                                    item && item.sizes.map((items, index) =>
-                                                        <div key={index}>
-                                                            <span>{items.size} /</span>
-                                                            <span>{items.price} &#8377; /</span>
-                                                            <span>{items.discountprice}% /</span>
-                                                            <span>{items.finalprice} &#8377; /</span>
-                                                            <span>{items.stock} pees</span>
-                                                        </div>
-                                                    )
-                                                }
                                             </td>
                                             <td>
                                                 <Link to={`/updateproduct/${item._id}`}>
