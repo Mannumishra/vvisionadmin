@@ -20,7 +20,7 @@ import Login from './Components/Login/Login';
 
 
 function App() {
-  const login = sessionStorage.getItem("login")
+  // const login = sessionStorage.getItem("login")
   return (
     <>
       <BrowserRouter>
@@ -43,7 +43,7 @@ function App() {
           <Route path='/createcategory' element={<CreateCategory />} />
           <Route path='/updatecategory/:_id' element={<UpdateCategory />} />
 
-          <Route path='/' element={login ? "" : <Login />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
         <Footer />
       </BrowserRouter>
