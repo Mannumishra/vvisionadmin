@@ -9,7 +9,7 @@ const Product = () => {
 console.log(data)
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/product")
+            let res = await axios.get("https://sanjivanser.onrender.com/api/product")
             setData(res.data.data)
         } catch (error) {
             console.log(error);
@@ -17,7 +17,7 @@ console.log(data)
     }
     const deleteRecord = async (_id) => {
         try {
-            let res = await axios.delete("http://localhost:8000/api/product/" + _id)
+            let res = await axios.delete("https://sanjivanser.onrender.com/api/product/" + _id)
             if (res.status === 200) {
                 toast.success("Product deleted successfully")
                 getApiData()

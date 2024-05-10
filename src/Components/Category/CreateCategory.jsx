@@ -28,7 +28,7 @@ const CreateCategory = () => {
         formData.append("description", data.description)
         formData.append("image", data.image)
         try {
-            let res = await axios.post("http://localhost:8000/api/category", formData)
+            let res = await axios.post("https://sanjivanser.onrender.com/api/category", formData)
             console.log(res)
             if (res.status === 200) {
                 toast.success("Product Category is created")

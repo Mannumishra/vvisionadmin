@@ -31,7 +31,7 @@ const UpdateTestimonial = () => {
     const postData = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put(`http://localhost:8000/api/testimonial/${_id}`, formData);
+            const res = await axios.put(`https://sanjivanser.onrender.com/api/testimonial/${_id}`, formData);
             if (res.status === 200) {
                 toast.success("Testimonial Updated Successfully");
                 navigate("/testimonial");
@@ -43,7 +43,7 @@ const UpdateTestimonial = () => {
 
     const getApiData = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/testimonial/${_id}`);
+            const res = await axios.get(`https://sanjivanser.onrender.com/api/testimonial/${_id}`);
             setData(res.data.data);
         } catch (error) {
             console.log(error);
