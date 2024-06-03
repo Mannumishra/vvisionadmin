@@ -7,7 +7,7 @@ const Contact = () => {
 
     const getApiData = async()=>{
         try {
-           let res = await axios.get("https://sanjivanser.onrender.com/api/contact")
+           let res = await axios.get("http://localhost:8000/api/category/api/contact")
            console.log(res) 
            setData(res.data.data)
         } catch (error) {

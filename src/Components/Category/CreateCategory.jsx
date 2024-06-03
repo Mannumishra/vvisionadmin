@@ -5,11 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 const CreateCategory = () => {
-    // const token = sessionStorage.getItem("token")
-    // console.log(token)
     const [data, setData] = useState({
         categoryname: "",
-        description: "",
         image: ""
     })
     const navigate = useNavigate()
@@ -25,10 +22,9 @@ const CreateCategory = () => {
         e.preventDefault()
         const formData = new FormData()
         formData.append("categoryname", data.categoryname)
-        formData.append("description", data.description)
         formData.append("image", data.image)
         try {
-            let res = await axios.post("https://sanjivanser.onrender.com/api/category", formData)
+            let res = await axios.post("http://localhost:8000/api/category", formData)
             console.log(res)
             if (res.status === 200) {
                 toast.success("Product Category is created")
@@ -50,16 +46,12 @@ const CreateCategory = () => {
                         <div className="form-container">
                             <form onSubmit={postData}>
                                 <div className="mb-2">
-                                    <label htmlFor="productName" className="form-label">Category Name</label>
+                                    <label htmlFor="productName" className="form-label">Product Category Name</label>
                                     <input type="text" name="categoryname" id="productName" className="form-control" onChange={getInputData} />
                                 </div>
                                 <div className="mb-2">
-                                    <label htmlFor="productName" className="form-label">Category Image</label>
+                                    <label htmlFor="productName" className="form-label">Product Category Image</label>
                                     <input type="file" name="image" id="productName" className="form-control" onChange={getFileData} />
-                                </div>
-                                <div className="mb-2">
-                                    <label htmlFor="productName" className="form-label">Category description</label>
-                                    <input type="text" name="description" id="productName" className="form-control" onChange={getInputData} />
                                 </div>
                                 <button type="submit" className="btn btn-dark w-100">Add Product Category</button>
                             </form>

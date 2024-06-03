@@ -10,7 +10,7 @@ function UpdateProduct() {
     const [catedata, setCatedata] = useState([])
     const getApiCateData = async () => {
         try {
-            let res = await axios.get("https://sanjivanser.onrender.com/api/category")
+            let res = await axios.get("http://localhost:8000/api/category/api/category")
             setCatedata(res.data.data)
         } catch (error) {
             console.log(error);
@@ -38,7 +38,7 @@ function UpdateProduct() {
 
     const getApiData = async () => {
         try {
-            let res = await axios.get("https://sanjivanser.onrender.com/api/product/" + _id)
+            let res = await axios.get("http://localhost:8000/api/category/api/product/" + _id)
             console.log(res);
             setData(res.data.data)
         } catch (error) {
@@ -56,7 +56,7 @@ function UpdateProduct() {
             formData.append("image1", data.image1);
             formData.append("image2", data.image2);
             formData.append("image3", data.image3);
-            const res = await axios.put("https://sanjivanser.onrender.com/api/product/" + _id, formData);
+            const res = await axios.put("http://localhost:8000/api/category/api/product/" + _id, formData);
             if (res.status === 200) {
                 toast.success("Product Updated created")
                 navigate("/product")

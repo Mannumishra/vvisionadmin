@@ -9,7 +9,7 @@ function CreateProduct() {
     const [catedata, setCatedata] = useState([])
     const getApiData = async () => {
         try {
-            let res = await axios.get("https://sanjivanser.onrender.com/api/category")
+            let res = await axios.get("http://localhost:8000/api/category/api/category")
             console.log(res);
             setCatedata(res.data.data)
         } catch (error) {
@@ -46,7 +46,7 @@ function CreateProduct() {
             formData.append("image1", data.image1);
             formData.append("image2", data.image2);
             formData.append("image3", data.image3);
-            const res = await axios.post("https://sanjivanser.onrender.com/api/product", formData);
+            const res = await axios.post("http://localhost:8000/api/category/api/product", formData);
             console.log(res);
             if (res.status === 200) {
                 toast.success("New Product created")

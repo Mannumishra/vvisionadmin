@@ -22,7 +22,7 @@ const UpdateCategory = () => {
     }
     const getApiData = async () => {
         try {
-            let res = await axios.get("https://sanjivanser.onrender.com/api/category/" + _id)
+            let res = await axios.get("http://localhost:8000/api/category/api/category/" + _id)
             console.log(res);
             setData(res.data.data)
         } catch (error) {
@@ -36,7 +36,7 @@ const UpdateCategory = () => {
         formData.append("description", data.description)
         formData.append("image", data.image)
         try {
-            let res = await axios.put("https://sanjivanser.onrender.com/api/category/" + _id, formData)
+            let res = await axios.put("http://localhost:8000/api/category/api/category/" + _id, formData)
             if (res.status === 200) {
                 toast.success("Product Category is Updated")
                 navigate("/category")
