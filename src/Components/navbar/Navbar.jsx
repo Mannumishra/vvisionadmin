@@ -28,7 +28,7 @@ const Navbar = () => {
                         }
                     </ul>
                     <ul style={{ display: "flex", listStyle: "none", fontSize: "25px", color: "white" }}>
-                        {login ? <li><button onClick={logout} className="btn btn-link text-light">Logout</button>
+                        {login ? <li><button onClick={logout} className="btn btn-danger text-light">Logout</button>
                         </li> :
                             <li> <Link to='/login'><i className="fa fa-user text-light"></i></Link></li>
                             

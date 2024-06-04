@@ -9,7 +9,7 @@ const Product = () => {
 console.log(data)
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category/api/product")
+            let res = await axios.get("http://localhost:8000/api/product")
             setData(res.data.data)
         } catch (error) {
             console.log(error);
@@ -17,7 +17,7 @@ console.log(data)
     }
     const deleteRecord = async (_id) => {
         try {
-            let res = await axios.delete("http://localhost:8000/api/category/api/product/" + _id)
+            let res = await axios.delete("http://localhost:8000/api/product/" + _id)
             if (res.status === 200) {
                 toast.success("Product deleted successfully")
                 getApiData()
@@ -38,16 +38,16 @@ console.log(data)
                     </div>
                     <div className="col-md-9 mb-5">
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <h2>Best Seller Product</h2>
-                            <span><Link to='/createproduct' className='btn btn-dark'>Create Product</Link></span>
+                            <h2>Machine</h2>
+                            <span><Link to='/createproduct' className='btn btn-dark'>Add A New Machine</Link></span>
                         </div>
                         <div className="table-responsive">
                             <table className='table table-bordered'>
                                 <thead>
                                     <tr>
-                                        <th>Product Name</th>
-                                        <th>Category Name</th>
-                                        <th>Description</th>
+                                        <th>Machine Name</th>
+                                        <th>Machine Type</th>
+                                        {/* <th>Description</th> */}
                                         <th>Image1</th>
                                         <th>Image2</th>
                                         <th>Image3</th>
@@ -58,14 +58,9 @@ console.log(data)
                                 <tbody>
                                     { data.map((item, index) => (
                                         <tr key={index}>
-                                            <td>{item.productname}</td>
                                             <td>{item.categoryname}</td>
-                                            <td>{item.productdescription}</td>
-                                            <td>
-                                                <a href={item.image} target='_blank' rel="noopener noreferrer">
-                                                    <img src={item.image} alt="" style={{ height: 50 }} />
-                                                </a>
-                                            </td>
+                                            <td>{item.machinetype}</td>
+                                            {/* <td>{item.productdescription}</td> */}
                                             <td>
                                                 <a href={item.image1} target='_blank' rel="noopener noreferrer">
                                                     <img src={item.image1} alt="" style={{ height: 50 }} />
@@ -79,6 +74,11 @@ console.log(data)
                                             <td>
                                                 <a href={item.image3} target='_blank' rel="noopener noreferrer">
                                                     <img src={item.image3} alt="" style={{ height: 50 }} />
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href={item.image4} target='_blank' rel="noopener noreferrer">
+                                                    <img src={item.image4} alt="" style={{ height: 50 }} />
                                                 </a>
                                             </td>
                                             <td>

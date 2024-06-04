@@ -7,7 +7,6 @@ import toast from 'react-hot-toast'
 const UpdateCategory = () => {
     const [data, setData] = useState({
         categoryname: "",
-        description: "",
         image: ""
     })
     const navigate = useNavigate()
@@ -22,7 +21,7 @@ const UpdateCategory = () => {
     }
     const getApiData = async () => {
         try {
-            let res = await axios.get("http://localhost:8000/api/category/api/category/" + _id)
+            let res = await axios.get("http://localhost:8000/api/category/" + _id)
             console.log(res);
             setData(res.data.data)
         } catch (error) {
@@ -36,7 +35,7 @@ const UpdateCategory = () => {
         formData.append("description", data.description)
         formData.append("image", data.image)
         try {
-            let res = await axios.put("http://localhost:8000/api/category/api/category/" + _id, formData)
+            let res = await axios.put("http://localhost:8000/api/category/" + _id, formData)
             if (res.status === 200) {
                 toast.success("Product Category is Updated")
                 navigate("/category")
@@ -67,11 +66,7 @@ const UpdateCategory = () => {
                                     <label htmlFor="productName" className="form-label">Category Image</label>
                                     <input type="file" name="image" id="productName" className="form-control" onChange={getFileData} />
                                 </div>
-                                <div className="mb-2">
-                                    <label htmlFor="productName" className="form-label">Category description</label>
-                                    <input type="text" name="description" id="productName" value={data.description} className="form-control" onChange={getInputData} />
-                                </div>
-                                <button type="submit" className="btn btn-dark w-100">Add Product Category</button>
+                                <button type="submit" className="btn btn-dark w-100">Update Product Category</button>
                             </form>
                         </div>
                     </div>

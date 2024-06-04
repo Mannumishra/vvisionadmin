@@ -42,18 +42,18 @@ const CreateCategory = () => {
                         <Sidebar />
                     </div>
                     <div className="col-md-9">
-                        <h2 className=' p-2 text-dark text-center'>Create Product Category</h2>
+                        <h2 className=' p-2 text-dark text-center'>Create Machine Category</h2>
                         <div className="form-container">
                             <form onSubmit={postData}>
                                 <div className="mb-2">
-                                    <label htmlFor="productName" className="form-label">Product Category Name</label>
+                                    <label htmlFor="productName" className="form-label">Machine Category Name</label>
                                     <input type="text" name="categoryname" id="productName" className="form-control" onChange={getInputData} />
                                 </div>
                                 <div className="mb-2">
-                                    <label htmlFor="productName" className="form-label">Product Category Image</label>
+                                    <label htmlFor="productName" className="form-label">Machine Category Image</label>
                                     <input type="file" name="image" id="productName" className="form-control" onChange={getFileData} />
                                 </div>
-                                <button type="submit" className="btn btn-dark w-100">Add Product Category</button>
+                                <button type="submit" className="btn btn-dark w-100">Add Machine Category</button>
                             </form>
                         </div>
                     </div>
