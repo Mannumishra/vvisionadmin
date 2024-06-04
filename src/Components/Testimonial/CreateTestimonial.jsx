@@ -30,7 +30,7 @@ const CreateTestimonial = () => {
             formData.append("message", data.message);
             formData.append("image", data.image);
 
-            const res = await axios.post("http://localhost:8000/api/category/api/testimonial", formData);
+            const res = await axios.post("https://vvisionserver.onrender.com/api/category/api/testimonial", formData);
             if (res.status === 200) {
                 toast.success("Testimonial Created Successfully");
                 navigate("/testimonial");
